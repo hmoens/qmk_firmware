@@ -1,4 +1,7 @@
 OLED_DRIVER_ENABLE = yes   # Enables the use of OLED displays
 ENCODER_ENABLE = yes       # Enables the use of one or more encoders
 RGBLIGHT_ENABLE = yes      # Enable keyboard RGB underglow
-UNICODE_ENABLE = yes
+#UNICODE_ENABLE = yes
+SWAP_HANDS_ENABLE = yes
+
+SRC += features/casemodes.c
