@@ -5,5 +5,4 @@ RGBLIGHT_ENABLE = yes      # Enable keyboard RGB underglow
 SWAP_HANDS_ENABLE = yes
 SPLIT_KEYBOARD = yes
 
-
 SRC += features/casemodes.c
