@@ -237,7 +237,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 // // TD(TD_LSFT_CAPS)
 // // LSFT_T(KC_CAPS)
 
-#ifdef OLED_DRIVER_ENABLE
+#ifdef OLED_ENABLE
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 	return OLED_ROTATION_180;
 }
@@ -286,11 +286,11 @@ void oled_task_user(void) {
             case _FN:
                 oled_write_P(PSTR("Layer: Fn\n"), false);
                 if (is_keyboard_left()) {
-                    oled_write_P(PSTR("F1   F2   F3   F4   F5\n\n"), false);
-                    oled_write_P(PSTR("Mut  VDw  DUp  Ply  \n\n"), false);
-                    oled_write_P(PSTR("F11  F12  PSc  PWn  PRe\n\n"), false);
+                    oled_write_P(PSTR("F1  F2  F3  F4  F5\n\n"), false);
+                    oled_write_P(PSTR("Mut VDw DUp Ply \n\n"), false);
+                    oled_write_P(PSTR("F11 F12 PSc PWn PRe\n\n"), false);
                 } else {
-                    oled_write_P(PSTR("F6   F7   F8   F9   F10\n\n"), false);
+                    oled_write_P(PSTR("F6  F7  F8  F9  F10\n\n"), false);
                     oled_write_P(PSTR("\n\n"), false);
                     oled_write_P(PSTR("\n\n"), false);
                 }
@@ -310,27 +310,6 @@ void oled_task_user(void) {
         oled_write_P(IS_LED_ON(led_usb_state, USB_LED_NUM_LOCK) ? PSTR("NUMLCK ") : PSTR("       "), false);
         oled_write_P(IS_LED_ON(led_usb_state, USB_LED_CAPS_LOCK) ? PSTR("CAPLCK ") : PSTR("       "), false);
         oled_write_P(IS_LED_ON(led_usb_state, USB_LED_SCROLL_LOCK) ? PSTR("SCRLCK ") : PSTR("       "), false);
-    }
-}
-#endif
-
-#ifdef ENCODER_ENABLE
-void encoder_update_user(uint8_t index, bool clockwise) {
-    if (index == 0) {
-        // Volume control
-        if (clockwise) {
-            tap_code(KC_VOLU);
-        } else {
-            tap_code(KC_VOLD);
-        }
-    }
-    else if (index == 1) {
-        // Page up/Page down
-        if (clockwise) {
-            tap_code(KC_PGDN);
-        } else {
-            tap_code(KC_PGUP);
-        }
     }
 }
 #endif
