@@ -244,7 +244,7 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 
 uint8_t last_highest_layer = -1;
 
-void oled_task_user(void) {
+bool oled_task_user(void) {
     uint8_t highest_layer = get_highest_layer(layer_state);
     if (highest_layer != last_highest_layer) {
         last_highest_layer = highest_layer;
@@ -311,5 +311,6 @@ void oled_task_user(void) {
         oled_write_P(IS_LED_ON(led_usb_state, USB_LED_CAPS_LOCK) ? PSTR("CAPLCK ") : PSTR("       "), false);
         oled_write_P(IS_LED_ON(led_usb_state, USB_LED_SCROLL_LOCK) ? PSTR("SCRLCK ") : PSTR("       "), false);
     }
+    return false;
 }
 #endif
